@@ -21,6 +21,19 @@ const AddCoffee = () => {
       photo,
     };
     console.log(newCoffee);
+
+    // send data to the server
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
