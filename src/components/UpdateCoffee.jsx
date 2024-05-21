@@ -1,5 +1,9 @@
 const UpdateCoffee = () => {
-  return <>Hello World</>;
+  return (
+    <>
+      <h2>Update Coffee</h2>
+    </>
+  );
 };
 
 export default UpdateCoffee;
