@@ -1,5 +1,31 @@
+import Swal from "sweetalert2";
+
 const CoffeeCard = ({ coffee }) => {
-  const { name, quantity, supplier, taste, category, details, photo } = coffee;
+  const { _id, name, quantity, supplier, taste, category, details, photo } =
+    coffee;
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+
+        console.log("deleted successfully");
+      }
+    });
+  };
 
   return (
     <>
@@ -18,7 +44,12 @@ const CoffeeCard = ({ coffee }) => {
             <div className="join join-vertical space-y-4">
               <button className="btn join-item">view</button>
               <button className="btn join-item">Edit</button>
-              <button className="btn join-item">Delete</button>
+              <button
+                onClick={() => handleDelete(_id)}
+                className="btn bg-red-950 join-item"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
